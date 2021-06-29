@@ -1,0 +1,46 @@
+
+import colorama
+from colorama import Fore
+print(f"{Fore.WHITE}Type a or b and then the enter button")
+print(f"{Fore.WHITE}Got it? Great let's start!")
+class Question:
+     def __init__(self, prompt, answer):
+          self.prompt = prompt
+          self.answer = answer
+
+question_prompts = [
+     f"{Fore.WHITE}""For Greeting we say: \n(a) Guten Tag\n(b) Wie geht's ",
+   f"{Fore.WHITE}""Asking about a place: \n(a) Was kostet...?\n(b) Wo ist...?",
+     f"{Fore.WHITE}""Thanking a person: \n(a) Bitte\n(b) Danke Schön",
+      f"{Fore.WHITE}""Asking about the price: \n(a) Was Kostet?\n(b) Wer ist das?",
+      f"{Fore.WHITE}""Apologize: \n(a) Leider\n(b) Entschuldigung"
+     
+]
+
+questions = [
+     Question(question_prompts[0],"a"),
+     Question(question_prompts[1],"b"),
+     Question(question_prompts[2],"b"),
+     Question(question_prompts[3],"a"),
+     Question(question_prompts[4],"b"),
+]
+
+def run_quiz(questions):
+    score = 0
+    for question in questions:
+          answer = input(question.prompt)
+          if answer == question.answer:
+               score +=1
+               print(f"{Fore.GREEN}Correct!")
+          else:
+              print(f"{Fore.RED}Oops Wrong Answer !")
+    print(f"{Fore.MAGENTA}End of the game!")
+    if (score>3):
+         print(f"{Fore.GREEN}Good Job! you got", score, "out of", len(questions))
+    elif (score==3):
+         print(f"{Fore.GREEN}Nice Try! you got", score, "out of", len(questions))
+    else:
+         print(f"{Fore.WHITE}Sorry! you got", score, "out of", len(questions))
+     
+        
+run_quiz(questions)
